@@ -4,6 +4,8 @@ const port = 4000;
 const mg = require("mongoose");
 //client에서 보내는 정보를 받기 위한 bodyparser
 const bodyParser = require("body-parser");
+const config = require("./config/key");
+
 
 //model파일의 User객체를 가져온다.
 const {User} = require('./model/User');
@@ -14,7 +16,7 @@ app.use(express.urlencoded({extended:true}));
 //app.use(bodyParser.json());
 app.use(express.json());
 
-mg.connect('mongodb+srv://h2llo:toddlf94@h2llo.muaub68.mongodb.net/?retryWrites=true&w=majority')
+mg.connect(config.mongoUri)
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
 
