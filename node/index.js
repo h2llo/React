@@ -36,6 +36,7 @@ app.post("/register", (req, res) => {
   //   return res.json({success:true,message:userInfo})
   // })
   // 주석처리한 이유. 지금은 callback이 안된다.
+  user.save();
   console.log(user);
   res.json({success:true,message:user});
 
